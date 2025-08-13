@@ -3,7 +3,7 @@ declare namespace Express {
     userQuery?: string;
     embedding?: number[];
     pineconeQueryResult?: import('@pinecone-database/pinecone').ScoredPineconeRecord<
-      import('./types').MovieMetadata
+      import('./types').QuoteMetadata
     >[];
     movieRecommendation?: string;
   }
