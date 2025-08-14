@@ -3,6 +3,7 @@ import cors from 'cors';
 // import { parseUserQuery } from './controllers/userQueryController.js'
 // import { queryPineconeDatabase } from './controllers/pineconeController.js'
 // import { queryOpenAIEmbedding, queryOpenAIChat } from './controllers/openaiController.js'
+// import { logQuery } from './controllers/loggingController.js';
 import 'dotenv/config';
 
 import { ServerError } from '../types/types.js';
@@ -14,7 +15,7 @@ app.use(express.json());
 
 app.post('/api', (_req, res) => {
   res.status(200).json({
-    movieRecommendation: 'You are amazing!',
+    // quoteRecommendation: 'You are amazing!',
   });
 });
 
