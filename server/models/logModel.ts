@@ -1,8 +1,21 @@
 import mongoose from 'mongoose';
 
+const resultSchema = new mongoose.Schema({
+  id: { type: String, required: true },
+  score: { type: Number },
+  values: [{ type: Number }],
+  sparseValues: [{ type: Number }],
+  metadata: {
+    content: {
+      type: String,
+      required: true,
+    },
+  },
+});
+
 const logSchema = new mongoose.Schema(
   {
-    userSign: {
+    userZodiac: {
       type: String,
       required: true,
     },
@@ -10,14 +23,9 @@ const logSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    allQuoteRecommendations: [
-      {
-        type: String,
-        required: true,
-      },
-    ],
+    pineconeQueryResult: [resultSchema],
     embedding: [{ type: Number, required: true }],
-    finalQuote: {
+    quoteRecommendation: {
       type: String,
       required: true,
     },
