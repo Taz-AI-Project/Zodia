@@ -18,7 +18,7 @@ export const parseUserQuery: RequestHandler = (req, res, next) => {
 
   if (typeof userZodiac !== 'string') {
     const error: ServerError = {
-      log: 'parseUserQuery: "zodiac" must be a string if provided',
+      log: 'parseUserQuery: "zodiac" must be a string',
       status: 400,
       message: { err: 'Invalid zodiac format' },
     };

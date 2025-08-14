@@ -47,10 +47,18 @@ export const queryOpenAIEmbedding: RequestHandler = async (_req, res, next) => {
 };
 
 export const queryOpenAIChat: RequestHandler = async (_req, res, next) => {
-  const { userQuery, pineconeQueryResult } = res.locals;
+  const { userQuery, userZodiac, pineconeQueryResult } = res.locals;
   if (!userQuery) {
     const error: ServerError = {
       log: 'queryOpenAIChat did not receive a user query',
+      status: 500,
+      message: { err: 'An error occurred before querying OpenAI' },
+    };
+    return next(error);
+  }
+  if (!userZodiac) {
+    const error: ServerError = {
+      log: 'queryOpenAIChat did not receive a user Zodiac',
       status: 500,
       message: { err: 'An error occurred before querying OpenAI' },
     };
@@ -64,6 +72,7 @@ export const queryOpenAIChat: RequestHandler = async (_req, res, next) => {
     };
     return next(error);
   }
+
   try {
     const result = await openai.chat.completions.create({
       model: 'gpt-4o',
@@ -73,16 +82,16 @@ export const queryOpenAIChat: RequestHandler = async (_req, res, next) => {
           content: `
 
         You are a helpful assistant that recommends helpful quotes to a user based on the feeling that they input.
-        You will be given a zodiac sign from the user ${userZodiac} along with how they are feeling.
+        You will be given a zodiac sign from the user along with how they are feeling.
         You will find the keywords that pertain to feelings from their input.
         You will determine whether the feeling is possitive or negative.
         You have access to a list of quotes from ${pineconeQueryResult} and the vectorized version of them.
         You will determine the best quote from the list that relates to their feeling.
         You will then change the quote to one that will be in your own words.
         Be aware of the feeling the user has and how people with that zodiac sign prefer to take information then adjust the quote to be most suitable them.
-        If their feeling is positive your response should include an encouraging initial response, then offer the quote you create as something that can reinforce that feeling
+        If their feeling is positive your response should include an encouraging initial response, then offer the quote you create as something that can reinforce that feeling.
         If their feeling is negative your response should include an apathetic initial response, then offer the quote you create as something that might help them through their feeling.
-        
+        Your response should will only mention the users zodiac sign in the form of: "as a ${userZodiac}, you"...
       `,
         },
         { role: 'user', content: userQuery, userZodiac },
