@@ -1,69 +1,77 @@
-# React + TypeScript + Vite
+# Zodiac
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![zodiac_iphone]()
 
-Currently, two official plugins are available:
+## User Story
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A user that is filled with emotion (positive or negative) wants to share with someone but a family member or friend is not available.
 
-## Expanding the ESLint configuration
+### Solution:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Create an AI friend that can listen to your feelings and provide inspirational quotes to help you process them.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Acceptance Criteria:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Users should be able to:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Input 2 pieces of data: zodiac sign and feeling
+- Receive an inspirational quote from the AI best suited for their current feeling in a 'voice' suited to their zodiac sign's personality traits.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Mockups
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+#### Desktop Wireframe
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+![wireframe1](./assets/wireframe_desktop.png)
+
+#### Middleware Architecture
+
+![middleware](./assets/middleware_architecture.png)
+
+#### React Component Structure
+
+![components](./assets/component_structure.png)
+
+#### Mongo DB Schema
+
+![schema](./assets/mongo_schema.png)
+
+## Technologies Used
+
+- React: the app uses embedded javascript to render information on the page
+- React router: the app uses routner to setup a route of the game page
+- Typescript: the app uses typescript due to its enhancement being the addition of static typing
+- Node & Express: the app has its own server, built using Express
+- MVC Pattern: the app uses the Model View Controller (MVC) programming design pattern
+- Supabase/PostgreSQL: the app persists data via a relational database
+- Mongoose: to model and query data in MongoDB through Node
+- Tailwind.css: The app is efficiently well-designed and considers user experience and usability
+- Postman: to test server requests
+- Dotenv: to load environment variables from .env file
+- Vite: for a fast modern development environment
+- Vitest: testing framework (Jest support for ECMAScript Modules is still experimental)
+- React testing library: to write unit tests for React components (works on top of react-dom which was already included)
+
+## Major Coding Wins
+
+## Technical Challenges
+
+- ## Disney
+- ## Lisa
+- ## Michael
+- ## Yuan
+
+## Installation Instructions
+
+1. Run `npm install` in root folder to install all necessary dependencies listed in the package.json
+2. Create a `.env` file in the root. You'll need to have a `MONGO_URI` to connect to your MongoDB, which can be found in `server/config/db.ts`
+3. (To DO: add openai setup instructions)
+4. (To DO: add pinecone setup instructions)
+5. To launch the app locally run `npm start` from the root folder and navigate to **localhost:5173** in your browser.
+
+## Unsolved Problems
+
+-
+
+## Next Steps
+
+-
