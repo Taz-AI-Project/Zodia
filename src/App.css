@@ -4,8 +4,14 @@
   --color-finn: #542360;
   --color-champagne: #ffead0;
   --color-rosybrown: #c8a7ad;
+  --color-darkpurple: #1a0a24;
 }
 
+@layer components {
+  button {
+    @apply bg-finn cursor-pointer text-champagne shadow-lg hover:shadow-[0_0px_35px_rgba(227,171,206,0.7)] transition-shadow duration-300 m-4 p-1 w-24;
+  }
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -63,4 +69,36 @@ select {
 
 button {
   border-radius: 6px;
+}
+
+.star-field {
+  /* background-color: #000; */
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* Hide stars outside the view */
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 100px 50px #fff, 250px 120px #fff, 400px 80px #fff,
+    /* Add more box-shadow values for more stars */ 550px 200px #fff;
+  animation: animStar 50s linear infinite;
+  &::after {
+    box-shadow: 100px 50px #fff, 250px 120px #fff, 400px 80px #fff,
+      /* Add more box-shadow values for more stars */ 550px 200px #fff;
+  }
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
 }
