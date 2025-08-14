@@ -16,6 +16,7 @@ export const queryPineconeDatabase: RequestHandler = async (
   next
 ) => {
   const { embedding } = res.locals;
+  console.log('🔍 in queryPineconeDatabase');
   if (!embedding) {
     const error: ServerError = {
       log: 'Database query middleware did not receive embedding',
