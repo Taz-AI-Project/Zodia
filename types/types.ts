@@ -5,14 +5,7 @@ export type ServerError = {
 };
 
 //TO DO: change type name and key value pairs
-export type MovieMetadata = {
+export type QuoteMetadata = {
   id: string;
-  year: number;
-  title: string;
-  origin: string;
-  director: string;
-  cast: string;
-  genre: string;
-  wiki: string;
-  plot: string;
+  content: string;
 };

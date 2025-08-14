@@ -4,6 +4,7 @@ import { parseUserQuery } from './controllers/userQueryController.js'
 //import { parseUserQuery } from './controllers/userQueryController.ts'
 // import { queryPineconeDatabase } from './controllers/pineconeController.js'
 // import { queryOpenAIEmbedding, queryOpenAIChat } from './controllers/openaiController.js'
+// import { logQuery } from './controllers/loggingController.js';
 import 'dotenv/config';
 
 import { ServerError } from '../types/types.js';

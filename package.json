@@ -8,10 +8,11 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "nodemon --exec node --no-warnings=ExperimentalWarning --loader ts-node/esm ./server/server.ts",
+    "start": "nodemon --exec node --no-warnings=ExperimentalWarning --loader ts-node/esm ./server/server.ts & npm run dev",
     "server": "nodemon --exec node --no-warnings=ExperimentalWarning --loader ts-node/esm ./server/server.ts",
     "test": "jest",
-    "upsert-batch": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./offline/upsert-batch.ts"
+    "upsert-batch": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./offline/upsert-batch.ts",
+    "embed": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./offline/buildEmbedding.ts"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^6.1.2",
@@ -26,21 +27,21 @@
     "supertest": "^7.1.4"
   },
   "devDependencies": {
-    "ts-loader": "^9.5.1",
+    "@eslint/js": "^9.33.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.8.6",
+    "@types/node": "^22.17.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/supertest": "^6.0.2",
-    "@eslint/js": "^9.33.0",
     "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
     "nodemon": "^3.1.10",
+    "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
