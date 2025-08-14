@@ -1,10 +1,12 @@
 import express, { ErrorRequestHandler } from 'express';
 import cors from 'cors';
-import { parseUserQuery } from './controllers/userQueryController.js'
-//import { parseUserQuery } from './controllers/userQueryController.ts'
-// import { queryPineconeDatabase } from './controllers/pineconeController.js'
-// import { queryOpenAIEmbedding, queryOpenAIChat } from './controllers/openaiController.js'
-// import { logQuery } from './controllers/loggingController.js';
+import { parseUserQuery } from './controllers/userQueryController.js';
+import {
+  queryOpenAIEmbedding,
+  queryOpenAIChat,
+} from './controllers/openaiController.js';
+import { queryPineconeDatabase } from './controllers/pineconeController.js';
+import { logQuery } from './controllers/loggingController.js';
 import 'dotenv/config';
 
 import { ServerError } from '../types/types.js';
@@ -14,12 +16,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/api', parseUserQuery, (_req, res) => {
-  //demo showing res.locals.userQuery is set
-  res.status(200).json({
-    quoteRecommendation: 'You are amazing!',
-  });
-});
+app.post(
+  '/api',
+  parseUserQuery,
+  // queryOpenAIEmbedding,
+  queryPineconeDatabase,
+  queryOpenAIChat,
+  logQuery,
+
+  (_req, res) => {
+    res.status(200).json({
+      // quoteRecommendation: 'You are amazing!',
+      // userQueries: res.locals.userQuery,
+      pineconeQueryResult: res.locals.pineconeQueryResult,
+    });
+  }
+);
 
 const errorHandler: ErrorRequestHandler = (
   err: ServerError,

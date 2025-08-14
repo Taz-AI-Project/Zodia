@@ -63,7 +63,11 @@ Users should be able to:
 ## Installation Instructions
 
 1. Run `npm install` in root folder to install all necessary dependencies listed in the package.json
-2. Create a `.env` file in the root. You'll need to have a `MONGO_URI` to connect to your MongoDB, which can be found in `server/config/db.ts`
+2. Create a `.env` file in the root. You'll need to have:
+   a. `MONGO_URI` to connect to your MongoDB, which can be found in `server/config/db.ts`
+   b. `OPENAI_API_KEY` to connect to OpenAI, which can be found in `server/controllers/openaiController.ts`
+   c. `PINECONE_API_KEY`, to connect to the pinecone vector database.
+   d. `PINECONE_INDEX`= "quotes" - create a new index in Pinecone using `text-embedding-3-small` type and dimension `512`, - run `npm run upsert-batch`,
 3. (To DO: add openai setup instructions)
 4. (To DO: add pinecone setup instructions)
 5. To launch the app locally run `npm start` from the root folder and navigate to **localhost:5173** in your browser.

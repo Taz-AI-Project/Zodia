@@ -1,6 +1,7 @@
 import { RequestHandler } from 'express';
 import { ServerError } from '../../types/types';
 import OpenAI from 'openai';
+import 'dotenv/config';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY!,
@@ -8,6 +9,7 @@ const openai = new OpenAI({
 
 export const queryOpenAIEmbedding: RequestHandler = async (_req, res, next) => {
   const { userQuery } = res.locals;
+  console.log('🔍 in open ai controlller');
   if (!userQuery) {
     const error: ServerError = {
       log: 'queryOpenAIEmbedding did not receive a user query',
@@ -22,7 +24,7 @@ export const queryOpenAIEmbedding: RequestHandler = async (_req, res, next) => {
       input: userQuery,
       encoding_format: 'float',
     });
-    // console.log(embedding.data[0].embedding);
+    console.log('embedding', embedding.data[0].embedding);
     if (!embedding) {
       const error: ServerError = {
         log: 'queryOpenAI: Error: OpenAI error',
