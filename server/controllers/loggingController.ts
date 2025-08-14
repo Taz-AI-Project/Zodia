@@ -7,7 +7,7 @@ export const logQuery: RequestHandler = async (_req, res, next) => {
   //   const { userSign, userQuery, allQuoteRecommendations, embedding, finalQuote } =
   //     res.locals;
 
-  //TO DO: test data to be removed
+  //TO DO: mock data to be removed
   const userSign = 'Aquarius';
   const userQuery = 'I feel happy about coding';
   const allQuoteRecommendations = ['quote 1', 'quote 2', 'quote 3'];
