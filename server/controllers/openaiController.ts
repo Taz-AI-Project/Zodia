@@ -87,7 +87,7 @@ export const queryOpenAIChat: RequestHandler = async (_req, res, next) => {
         You will determine the best quote from the list that relates to their feeling.
         You will then change the quote to one that will be in your own words.
         Be aware of the feeling the user has and how people with that zodiac sign prefer to take information then adjust the quote to be most suitable them.
-        If their feeling is positive your response should include an encouraging initial response, then offer the quote you create as something that can reinforce that feeling
+        If their feeling is positive your response should include an encouraging initial response, then offer the quote you create as something that can reinforce that feeling.
         If their feeling is negative your response should include an apathetic initial response, then offer the quote you create as something that might help them through their feeling.
         Your response should will only mention the users zodiac sign in the form of: "as a ${userZodiac}, you"...
       `,
