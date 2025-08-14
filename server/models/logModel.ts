@@ -16,12 +16,9 @@ const logSchema = new mongoose.Schema(
         required: true,
       },
     ],
-    embedding: {
-      type: String,
-      required: true,
-    },
+    embedding: [{ type: Number, required: true }],
     finalQuote: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
