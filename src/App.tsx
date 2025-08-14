@@ -1,6 +1,10 @@
+
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Card from './Card';
+import MusicButton from './MusicButton'
+
+
 
 interface quoteResonse {
   quoteRecommendation: string;
@@ -46,7 +50,8 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="relative min-h-screen">
+      <MusicButton />
       <h1 className='text-red-500'>Zodiac project</h1>
       <div className='flex justify-center m-5'>
         <p className='text-champagne mr-5'>Whats your sign?</p>
