@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Card from './Card'
+import MusicButton from './MusicButton'
 
 
 function App() {
@@ -40,7 +41,8 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="relative min-h-screen">
+      <MusicButton />
       <h1 className='text-red-500'>Zodiac project</h1>
       <div>
         <p className='text-white'>Whats your sign?</p>
