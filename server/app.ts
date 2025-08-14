@@ -1,6 +1,7 @@
 import express, { ErrorRequestHandler } from 'express';
 import cors from 'cors';
-// import { parseUserQuery } from './controllers/userQueryController.js'
+import { parseUserQuery } from './controllers/userQueryController.js'
+//import { parseUserQuery } from './controllers/userQueryController.ts'
 // import { queryPineconeDatabase } from './controllers/pineconeController.js'
 // import { queryOpenAIEmbedding, queryOpenAIChat } from './controllers/openaiController.js'
 import 'dotenv/config';
@@ -12,9 +13,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/api', (_req, res) => {
+app.post('/api', parseUserQuery, (_req, res) => {
+  //demo showing res.locals.userQuery is set
   res.status(200).json({
-    movieRecommendation: 'You are amazing!',
+    quoteRecommendation: 'You are amazing!',
   });
 });
 
