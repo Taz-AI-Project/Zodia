@@ -9,7 +9,7 @@ const openai = new OpenAI({
 
 export const queryOpenAIEmbedding: RequestHandler = async (_req, res, next) => {
   const { userQuery } = res.locals;
-  console.log('🔍 in open ai controlller');
+  console.log('🔍 in queryOpenAIEmbedding');
   if (!userQuery) {
     const error: ServerError = {
       log: 'queryOpenAIEmbedding did not receive a user query',
@@ -48,6 +48,7 @@ export const queryOpenAIEmbedding: RequestHandler = async (_req, res, next) => {
 
 export const queryOpenAIChat: RequestHandler = async (_req, res, next) => {
   const { userQuery, userZodiac, pineconeQueryResult } = res.locals;
+  console.log('🔍 in queryOpenAIChat');
   if (!userQuery) {
     const error: ServerError = {
       log: 'queryOpenAIChat did not receive a user query',
@@ -94,7 +95,7 @@ export const queryOpenAIChat: RequestHandler = async (_req, res, next) => {
         Your response should will only mention the users zodiac sign in the form of: "as a ${userZodiac}, you"...
       `,
         },
-        { role: 'user', content: userQuery, userZodiac },
+        { role: 'user', content: `I am a ${userZodiac} and ${userQuery}` },
       ],
       temperature: 1.5,
     });
