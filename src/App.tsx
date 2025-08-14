@@ -22,7 +22,7 @@ function App() {
       const response = await fetch('/api', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ zodiac: zodiacSign, userQuery: feelingContent })
+        body: JSON.stringify({ userZodiac: zodiacSign, userQuery: feelingContent })
       })
 
       if (response.status !== 200) {
