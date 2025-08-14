@@ -12,7 +12,8 @@
     "server": "nodemon --exec node --no-warnings=ExperimentalWarning --loader ts-node/esm ./server/server.ts",
     "test": "jest",
     "upsert-batch": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./offline/upsert-batch.ts",
-    "embed": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./offline/buildEmbedding.ts"
+    "embed": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./offline/buildEmbedding.ts",
+    "zodiacInfo": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./offline/buildDatesAndTraits.ts"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^6.1.2",
