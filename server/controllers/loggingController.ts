@@ -4,22 +4,22 @@ import Log from '../models/logModel.js';
 
 export const logQuery: RequestHandler = async (_req, res, next) => {
   console.log('in log controller');
-  //   const { userSign, userQuery, allQuoteRecommendations, embedding, finalQuote } =
+  //   const { userZodiac, userQuery, pineconeQueryResult, embedding, quoteRecommendation } =
   //     res.locals;
 
   //TO DO: mock data to be removed
-  const userSign = 'Aquarius';
+  const userZodiac = 'Aquarius';
   const userQuery = 'I feel happy about coding';
-  const allQuoteRecommendations = ['quote 1', 'quote 2', 'quote 3'];
+  const pineconeQueryResult = ['quote 1', 'quote 2', 'quote 3'];
   const embedding = [0, 1, 2];
-  const finalQuote = 'You are amazing!';
+  const quoteRecommendation = 'You are amazing!';
 
   try {
     const log = await Log.insertOne({
-      userSign,
+      userZodiac,
       userQuery,
-      allQuoteRecommendations,
-      finalQuote,
+      pineconeQueryResult,
+      quoteRecommendation,
       embedding,
     });
     res.locals.log = log;
