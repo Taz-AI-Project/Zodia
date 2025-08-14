@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import focusTrack from '../src/Public/ObservingTheStar.ogg';
 
 export default function MusicButton() {
@@ -23,19 +23,14 @@ export default function MusicButton() {
 
   return (
     <>
-      <audio
-        ref={audioRef}
-        src={focusTrack}
-        loop
-        preload="auto"
-      />
+      <audio ref={audioRef} src={focusTrack} loop preload='auto' />
       <button
         onClick={toggle}
-        className="fixed bottom-5 right-5 z-50 rounded-full bg-black text-white px-4 py-3 shadow-md active:scale-95"
-        aria-label={playing ? "Pause music" : "Play music"}
-        title={playing ? "Pause" : "Play"}
+        className='fixed bottom-5 right-5 z-50 active:scale-95'
+        aria-label={playing ? 'Pause music' : 'Play music'}
+        title={playing ? 'Pause' : 'Play'}
       >
-        {playing ? "⏸ Pause" : "▶️ Play"}
+        {playing ? 'Music: On' : 'Music: Off'}
       </button>
     </>
   );

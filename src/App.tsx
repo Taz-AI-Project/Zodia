@@ -1,10 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Card from './Card';
-import MusicButton from './MusicButton'
-
-
+import MusicButton from './MusicButton';
 
 interface quoteResonse {
   quoteRecommendation: string;
@@ -14,8 +11,9 @@ function App() {
   const [zodiacSign, setZodiacSign] = useState<string>('');
   const [feelingContent, setFeelingContent] = useState('');
   const [cardsArr, setCardsArr] = useState<null[]>([]);
-  const [cardsInfo, setCardsInfo] = useState('Quote');
-  // const [error, setError] = useState(''); //TO DO: update error handling on frontend
+  const [cardsInfo, setCardsInfo] = useState(' ');
+  const [error, setError] = useState(''); //TO DO: update error handling on frontend
+  const [personalityInfo, setPersonalityInfo] = useState({});
 
   useEffect(() => {
     setCardsArr(
@@ -43,6 +41,15 @@ function App() {
         const parsedResponse: quoteResonse = await response.json();
         setCardsInfo(parsedResponse.quoteRecommendation);
       }
+      const zodiacInfo = await fetch(`/api/${zodiacSign}`, {});
+      if (zodiacInfo.status !== 200) {
+        const parsedError: { err: string } = await zodiacInfo.json();
+        setError(parsedError.err);
+      } else {
+        const parsedResponse: quoteResonse = await zodiacInfo.json();
+        console.log('parsedResponse:', parsedResponse);
+        setPersonalityInfo(parsedResponse.datesAndTraits);
+      }
     } catch (error) {
       console.error('onSubmitHandler Error: ', error);
       setError('Error fetching recommendation');
@@ -50,12 +57,17 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-screen">
+    <div className='relative min-h-screen'>
       <MusicButton />
-      <h1 className='text-red-500'>Zodiac project</h1>
+      <h1 className='text-[min(10vw,40px)] font-semibold mb-8 text-white text-shadow-lg/30'>
+        Zodiac project
+      </h1>
       <div className='flex justify-center m-5'>
         <p className='text-champagne mr-5'>Whats your sign?</p>
         <select className='' onChange={(e) => setZodiacSign(e.target.value)}>
+          <option value='' disabled selected>
+            Choose sign
+          </option>
           <option value='Aries'>♈ Aries</option>
           <option value='Taurus'>♉ Taurus</option>
           <option value='Gemini'>♊ Gemini</option>
@@ -81,11 +93,7 @@ function App() {
           ></textarea>
         </label>
       </div>
-      <button
-        type='submit'
-        onClick={onSubmitHandler}
-        className='bg-finn cursor-pointer text-champagne shadow-lg hover:shadow-[0_0px_35px_rgba(227,171,206,0.7)] transition-shadow duration-300 m-4 p-1 w-24'
-      >
+      <button type='submit' onClick={onSubmitHandler} className=''>
         Talk To Me
       </button>
       <div id='cards' className='flex justify-center'>
@@ -93,6 +101,12 @@ function App() {
           cardsArr.map((card, index) => (
             <Card cardInfo={cardsInfo} index={index} />
           ))}
+      </div>
+      <div className='star-field'>
+        <div className='star'></div>
+        <div className='star'></div>
+        <div className='star'></div>
+        <div className='star'></div>
       </div>
     </div>
   );
