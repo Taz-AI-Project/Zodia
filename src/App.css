@@ -1,4 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+  --color-finn: #542360;
+  --color-champagne: #ffead0;
+  --color-rosybrown: #c8a7ad;
+}
 
 #root {
   max-width: 1280px;
@@ -58,4 +64,3 @@ select {
 button {
   border-radius: 6px;
 }
-
