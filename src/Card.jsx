@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 
 const Card = ({ cardInfo, index }) => {
     const [zIndex, setZIndex] = useState('')
-    console.log(index)
     useEffect(() => {
         const zIndexSetter = () => {
             if (index === 0) {
@@ -16,7 +15,7 @@ const Card = ({ cardInfo, index }) => {
     
     
   return (
-    <div className={`h-[25rem] w-[22rem] border-2 rounded-md absolute top-60 ${zIndex}`}>{cardInfo}</div>
+    <div className={`h-[25rem] w-[22rem] border-2 rounded-md absolute top-80 ${zIndex} border-white text-white`}>{ index=== 0 ? cardInfo : null }</div>
   )
 }
 export default Card

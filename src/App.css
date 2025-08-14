@@ -30,6 +30,9 @@ html {
     #340464 98%,
     #370569 100%
   );
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .logo {
@@ -40,8 +43,19 @@ html {
 }
 
 input {
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 6px;
   width: 24rem;
+  color: white;
+}
+
+select {
+  border: 1px solid white;
+  border-radius: 6px;
+  color: white;
+}
+
+button {
+  border-radius: 6px;
 }
 
