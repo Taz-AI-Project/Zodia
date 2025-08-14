@@ -3,7 +3,7 @@ import { ServerError } from '../../types/types';
 // Parse the user's feeling and pass it down the middleware chain
 export const parseUserQuery: RequestHandler = (req, res, next) => {
   const userQuery = req.body?.userQuery;
-  const zodiac = req.body?.zodiac;
+  const userZodiac = req.body?.userZodiac;
 
   // Validate input
   if (typeof userQuery !== 'string' || userQuery.trim() === '') {
@@ -14,19 +14,19 @@ export const parseUserQuery: RequestHandler = (req, res, next) => {
     };
     return next(error);
   }
-  //TO DO: validate zodiac
-  if (typeof zodiac !== 'string') {
+  //TO DO: validate userZodiac
+  if (typeof userZodiac !== 'string') {
       const error: ServerError = {
-        log: 'parseUserQuery: "zodiac" must be a string if provided',
+        log: 'parseUserQuery: "userZodiac" must be a string if provided',
         status: 400,
-        message: { err: 'Invalid zodiac format' },
+        message: { err: 'Invalid userZodiac format' },
       };
       return next(error);
     }
 
   // Normalize
   res.locals.userQuery = userQuery;
-  res.locals.zodiac = zodiac;
+  res.locals.userZodiac = userZodiac;
 
   return next();
 };
