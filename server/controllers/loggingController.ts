@@ -3,16 +3,32 @@ import { ServerError } from '../../types/types';
 import Log from '../models/logModel.js';
 
 export const logQuery: RequestHandler = async (_req, res, next) => {
-  console.log('in log controller');
-  //   const { userZodiac, userQuery, pineconeQueryResult, embedding, quoteRecommendation } =
-  //     res.locals;
+  console.log('🔍 in logQuery');
+  const {
+    userZodiac,
+    userQuery,
+    pineconeQueryResult,
+    embedding,
+    quoteRecommendation,
+  } = res.locals;
 
   //TO DO: mock data to be removed
-  const userZodiac = 'Aquarius';
-  const userQuery = 'I feel happy about coding';
-  const pineconeQueryResult = ['quote 1', 'quote 2', 'quote 3'];
-  const embedding = [0, 1, 2];
-  const quoteRecommendation = 'You are amazing!';
+  // const userZodiac = 'Aquarius';
+  // const userQuery = 'I feel happy!';
+  // const pineconeQueryResult = [
+  //   {
+  //     id: '1',
+  //     score: 0.999967217,
+  //     values: [],
+  //     sparseValues: undefined,
+  //     metadata: {
+  //       content:
+  //         'The more you praise and celebrate your life, the more there is in life to celebrate. - Oprah Winfrey',
+  //     },
+  //   },
+  // ];
+  // const embedding = [0, 1, 2];
+  // const quoteRecommendation = 'You are amazing!';
 
   try {
     const log = await Log.insertOne({
