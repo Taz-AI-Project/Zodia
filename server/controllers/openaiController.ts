@@ -9,6 +9,7 @@ const openai = new OpenAI({
 
 export const queryOpenAIEmbedding: RequestHandler = async (_req, res, next) => {
   const { userQuery } = res.locals;
+  const DIM = 512;
   console.log('🔍 in queryOpenAIEmbedding');
   if (!userQuery) {
     const error: ServerError = {
@@ -23,6 +24,7 @@ export const queryOpenAIEmbedding: RequestHandler = async (_req, res, next) => {
       model: 'text-embedding-3-small',
       input: userQuery,
       encoding_format: 'float',
+      dimensions: DIM,
     });
     console.log('embedding', embedding.data[0].embedding);
     if (!embedding) {
@@ -34,6 +36,7 @@ export const queryOpenAIEmbedding: RequestHandler = async (_req, res, next) => {
       return next(error);
     }
     res.locals.embedding = embedding.data[0].embedding;
+    return next();
   } catch (err) {
     const error: ServerError = {
       log: `queryOpenAIEmnbedding had an error embedding ${err}`,

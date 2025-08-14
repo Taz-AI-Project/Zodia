@@ -29,6 +29,10 @@ app.post(
   }
 );
 
+app.get('/api', (req, res) => {
+    
+})
+
 const errorHandler: ErrorRequestHandler = (
   err: ServerError,
   _req,

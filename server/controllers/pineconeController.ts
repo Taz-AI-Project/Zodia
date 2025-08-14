@@ -32,6 +32,7 @@ export const queryPineconeDatabase: RequestHandler = async (
       topK: 3,
       includeMetadata: true,
     });
+    console.log(result.matches);
     res.locals.pineconeQueryResult = result.matches;
     return next();
   } catch (err) {
@@ -42,38 +43,4 @@ export const queryPineconeDatabase: RequestHandler = async (
     };
     return next(error);
   }
-  // res.locals.pineconeQueryResult = [
-  //   {
-  //     id: '1',
-  //     score: 0.54014945,
-  //     values: [],
-  //     sparseValues: undefined,
-  //     metadata: {
-  //         id: '1',
-  //         content: 'You are amazing!',
-  //     }
-  //     },
-  //     {
-  //     id: '2',
-  //     score: 0.54014945,
-  //     values: [],
-  //     sparseValues: undefined,
-  //     metadata: {
-  //         id: '2',
-  //         content: 'I am amazing!',
-  //     }
-  //     },
-  //     {
-  //     id: '3',
-  //     score: 0.54014945,
-  //     values: [],
-  //     sparseValues: undefined,
-  //     metadata: {
-  //         id: '3',
-  //         content: 'They are amazing!',
-  //     }
-  //     },
-
-  // ];
-  // return next();
 };
