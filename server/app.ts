@@ -7,7 +7,6 @@ import {
 } from './controllers/openaiController.js';
 import { queryPineconeDatabase } from './controllers/pineconeController.js';
 import { logQuery } from './controllers/loggingController.js';
-import 'dotenv/config';
 
 import { ServerError } from '../types/types.js';
 
@@ -19,16 +18,13 @@ app.use(express.json());
 app.post(
   '/api',
   parseUserQuery,
-  // queryOpenAIEmbedding,
+  queryOpenAIEmbedding,
   queryPineconeDatabase,
   queryOpenAIChat,
   logQuery,
-
   (_req, res) => {
     res.status(200).json({
-      // quoteRecommendation: 'You are amazing!',
-      // userQueries: res.locals.userQuery,
-      pineconeQueryResult: res.locals.pineconeQueryResult,
+      quoteRecommendation: res.locals.quoteRecommendation,
     });
   }
 );
