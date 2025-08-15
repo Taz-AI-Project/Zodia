@@ -1,5 +1,6 @@
-@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Codystar:wght@300;400&family=Fredericka+the+Great&display=swap');
 
+@import 'tailwindcss';
 @theme {
   --color-finn: #542360;
   --color-champagne: #ffead0;
