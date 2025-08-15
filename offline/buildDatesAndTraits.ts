@@ -10,8 +10,8 @@ async function main() {
   await ZodiacInfo.insertMany([
     {
       userZodiac: 'Aries',
-      startD: '03/21',
-      endD: '04/19',
+      startD: 'March 21',
+      endD: 'April 20',
       traits: [
         'brave',
         'willful',
@@ -25,8 +25,8 @@ async function main() {
     },
     {
       userZodiac: 'Taurus',
-      startD: '04/20',
-      endD: '05/20',
+      startD: 'April 21',
+      endD: 'May 21',
       traits: [
         'practical',
         'resourceful',
@@ -40,8 +40,8 @@ async function main() {
     },
     {
       userZodiac: 'Gemini',
-      startD: '05/21',
-      endD: '06/20',
+      startD: 'May 21',
+      endD: 'June 21',
       traits: [
         'curious',
         'skillful',
@@ -56,8 +56,8 @@ async function main() {
     },
     {
       userZodiac: 'Cancer',
-      startD: '06/21',
-      endD: '07/22',
+      startD: 'June 22',
+      endD: 'July 22',
       traits: [
         'intelligent',
         'crafty',
@@ -71,8 +71,8 @@ async function main() {
     },
     {
       userZodiac: 'Leo',
-      startD: '07/23',
-      endD: '08/22',
+      startD: 'July 23',
+      endD: 'August 22',
       traits: [
         'dominant',
         'courageous',
@@ -86,8 +86,8 @@ async function main() {
     },
     {
       userZodiac: 'Virgo',
-      startD: '08/23',
-      endD: '09/22',
+      startD: 'August 24',
+      endD: 'September 23',
       traits: [
         'efficient',
         'industrious',
@@ -101,8 +101,8 @@ async function main() {
     },
     {
       userZodiac: 'Libra',
-      startD: '09/23',
-      endD: '10/22',
+      startD: 'September 23',
+      endD: 'October 22',
       traits: [
         'fair',
         'wise',
@@ -116,8 +116,8 @@ async function main() {
     },
     {
       userZodiac: 'Scorpio',
-      startD: '10/23',
-      endD: '11/21',
+      startD: 'October 23',
+      endD: 'November 22',
       traits: [
         'emotional',
         'determined',
@@ -130,8 +130,8 @@ async function main() {
     },
     {
       userZodiac: 'Sagittarius',
-      startD: '11/22',
-      endD: '12/21',
+      startD: 'November 22',
+      endD: 'December 20',
       traits: [
         'optimistic',
         'fair-minded',
@@ -145,8 +145,8 @@ async function main() {
     },
     {
       userZodiac: 'Capricorn',
-      startD: '12/22',
-      endD: '01/19',
+      startD: 'December 21',
+      endD: 'January 19',
       traits: [
         'self-disciplined',
         'persevering',
@@ -160,8 +160,8 @@ async function main() {
     },
     {
       userZodiac: 'Aquarius',
-      startD: '01/20',
-      endD: '02/18',
+      startD: 'January 20',
+      endD: 'February 18',
       traits: [
         'generous',
         'trustworthy',
@@ -174,8 +174,8 @@ async function main() {
     },
     {
       userZodiac: 'Pisces',
-      startD: '02/19',
-      endD: '03/20',
+      startD: 'February 18',
+      endD: 'March 20',
       traits: [
         'sensible',
         'placid',
