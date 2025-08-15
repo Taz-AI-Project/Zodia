@@ -17,6 +17,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  height: 100%;
 }
 
 html {
@@ -101,4 +102,32 @@ button {
   to {
     transform: translateY(-2000px);
   }
+}
+
+body{
+  height: 100%
+}
+
+.app-surface { position: relative; z-index: 2; }
+
+.star-field { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(130% 95% at 50% 128%,
+      rgba(255,168,60,0.90) 0%,
+      rgba(255,150,70,0.78) 18%,
+      rgba(255,130,90,0.58) 36%,
+      rgba(220,100,150,0.30) 56%,
+      rgba(60,10,90,0.10)   70%,
+      rgba(0,0,0,0)         84%);
+      
+  filter: blur(22px);     
+  mix-blend-mode: screen; 
+  opacity: 1;
 }
