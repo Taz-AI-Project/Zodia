@@ -75,7 +75,7 @@ function App() {
   };
 
   return (
-    <div className='relative min-h-screen'>
+    <div className='relative min-h-screen app-surface'>
       <MusicButton />
       <h1 className='text-[min(10vw,40px)] font-semibold mb-8 text-white text-shadow-lg/30'>
         Zodiac project
