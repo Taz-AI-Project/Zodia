@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 import { ServerError } from '../../types/types';
-import { ZodiacInfo } from '../models/zodiacModel';
+import { ZodiacInfo } from '../models/zodiacModel.js';
 
 export const zodiacQuery: RequestHandler = async (req, res, next) => {
     try{
