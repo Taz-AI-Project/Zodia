@@ -23,14 +23,6 @@ function App() {
   }, [])
 
   useEffect(() => {
-    setCardsArr(
-      Array.from({ length: 4 }, (_, index) => {
-        return <Card cardInfo={_} index={index} />;
-      })
-    );
-  }, []);
-
-  useEffect(() => {
     const setDates = async () => {
       const response = await fetch(`/api/${zodiacSign}`)
       console.log(response)
