@@ -61,6 +61,7 @@ Users should be able to:
   - Nested objects in mongo schema
   - Typescript interfaces
   - Tailwind
+  - code reviews, debugging, and quality assurance
 - Michael
   - Initializing quote dataset with embeddings
   - Styling: hazing effect
