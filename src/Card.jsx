@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 const Card = ({ cardInfo, index, zodiacSign, flipped }) => {
   const [zIndex, setZIndex] = useState("");
-//   console.log(zodiacSign);
   useEffect(() => {
     const zIndexSetter = () => {
       if (index === 0) {

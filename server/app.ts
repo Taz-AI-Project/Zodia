@@ -7,7 +7,7 @@ import {
 } from './controllers/openaiController.js';
 import { queryPineconeDatabase } from './controllers/pineconeController.js';
 import { logQuery } from './controllers/loggingController.js';
-
+import { zodiacQuery } from './controllers/datesAndTraitsController.js';
 import { ServerError } from '../types/types.js';
 
 const app = express();
@@ -28,6 +28,12 @@ app.post(
     });
   }
 );
+
+app.get('/api/:zodiac', zodiacQuery, (_req, res) => {
+  res.status(200).json({
+    datesAndTraits: res.locals.zodiacDatesAndTraits,
+  });
+});
 
 const errorHandler: ErrorRequestHandler = (
   err: ServerError,

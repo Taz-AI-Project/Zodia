@@ -70,6 +70,7 @@ Users should be able to:
    d. create a new index called `quotes` in Pinecone using `text-embedding-3-small` type and dimension `512`
    e. `PINECONE_INDEX`= "quotes" -
    f. run `npm run upsert-batch`. This will upsert the file in `offline/embeddings_data_with_vectors.json` to the Pinecone index,
+   g. run `npm run zodiacInfo`. This will upsert the mongo databse with dates and traits about each zodiac sign. To verify the data existence on local mongush, run `brew services start mongodb-community` and then run `mongosh`, `show dbs`, `use {db name}`, `show collections`, `db.zodiacinfos.find()`
 3. To launch the app locally run `npm start` from the root folder and navigate to **localhost:5173** in your browser.
 
 ## Unsolved Problems
