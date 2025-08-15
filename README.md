@@ -74,7 +74,8 @@ Users should be able to:
 3. To launch the app locally run `npm start` from the root folder and navigate to **localhost:5173** in your browser.
 
 ## Unsolved Problems
-
+AI Hallucinations ![Hallucinations] 
+(./assets/Hallucinations.png)
 -
 
 ## Next Steps
