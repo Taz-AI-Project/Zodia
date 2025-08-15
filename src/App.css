@@ -90,6 +90,7 @@ select {
 .card {
   perspective: 1000px;
   box-shadow: 2px 4px 16px 0px rgb(28, 4, 27, 0.5);
+  overflow: scroll;
 }
 
 .card-inner {
