@@ -59,7 +59,16 @@ function App() {
   return (
     <div className='relative min-h-screen'>
       <MusicButton />
-      <h1 className='text-[min(10vw,40px)] font-semibold mb-8 text-white text-shadow-lg/30'>
+      <h1
+        style={{
+          fontFamily: '"Codystar", cursive',
+          letterSpacing: '4px',
+          // fontFamily: '"Raleway Dots", cursive',
+          // letterSpacing: '8px',
+          color: 'gold',
+        }}
+        className='text-[min(10vw,40px)] mb-8 text-white text-shadow-lg/30'
+      >
         Zodiac project
       </h1>
       <div className='flex justify-center m-5'>
