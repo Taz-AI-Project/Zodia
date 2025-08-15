@@ -1,7 +1,5 @@
 # Zodia
 
-![zodiac_iphone]()
-
 ## User Story
 
 A user that is filled with emotion (positive or negative) wants to share with someone but a family member or friend is not available. This is the reality for many millenials, especially post-covid.
@@ -32,8 +30,6 @@ Users should be able to:
 ![components](./assets/component_structure.png)
 
 #### Mongo DB Schema
-
-![schema](./assets/mongo_schema.png)
 
 ## Technologies Used
 
