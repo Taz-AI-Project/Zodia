@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
 
-
-const Card = ({ cardInfo, index, startDate, endDate }) => {
-  const [rotation, setRotation] = useState('');
+const Card = ({ cardInfo, index, zodiacSign, flipped }) => {
+  const [zIndex, setZIndex] = useState("");
   useEffect(() => {
-    const rotationSetter = () => {
+    const zIndexSetter = () => {
       if (index === 0) {
-        setRotation('rotate-5');
+        setZIndex("rotate-5");
       } else {
-        setRotation('none');
+        setZIndex("none");
       }
     };
-    rotationSetter();
+    zIndexSetter();
   }, []);
 
   return (
     <div
-      className={`card h-[25rem] w-[16rem] border-3 border-white rounded-md absolute top-80 rotate-${index} ${
+      className={`card h-[25rem] w-[16rem] absolute top-80 ${zIndex} ${
         flipped && index === 0 ? "flipped" : ""
       }`}
     >
@@ -31,14 +30,7 @@ const Card = ({ cardInfo, index, startDate, endDate }) => {
             backgroundPosition: "center",
           }}
         >
-          { flipped && index === 3 && (
-        <div>
-          <p>
-            {startDate} - {endDate}
-          </p>
-          <p>{cardInfo}</p>
-        </div>
-      )}
+          { flipped && index === 3 ? cardInfo : null }
         </div>
 
         {/* Back Side */}

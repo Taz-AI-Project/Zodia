@@ -26,7 +26,7 @@ export default function MusicButton() {
       <audio ref={audioRef} src={focusTrack} loop preload='auto' />
       <button
         onClick={toggle}
-        className='fixed bottom-5 right-5 z-50 active:scale-95 w-24'
+        className='fixed bottom-5 right-5 z-50 active:scale-95'
         aria-label={playing ? 'Pause music' : 'Play music'}
         title={playing ? 'Pause' : 'Play'}
       >
