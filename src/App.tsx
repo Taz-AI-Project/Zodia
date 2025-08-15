@@ -13,7 +13,14 @@ function App() {
   const [cardsArr, setCardsArr] = useState<null[]>([]);
   const [cardsInfo, setCardsInfo] = useState(' ');
   const [error, setError] = useState(''); //TO DO: update error handling on frontend
+  const [flipped, setFlipped] = useState(false)
   const [personalityInfo, setPersonalityInfo] = useState({});
+    
+  useEffect(() => {
+    setCardsArr(Array.from({length: 4}, (_, index) => {
+      <Card cardInfo={_} index={index} zodiacSign={zodiacSign} flipped={flipped} />
+    }))
+  }, [])
 
   useEffect(() => {
     setCardsArr(
@@ -22,6 +29,14 @@ function App() {
       })
     );
   }, []);
+
+  useEffect(() => {
+    const setDates = async () => {
+      const response = await fetch(`/api/${zodiacSign}`)
+      console.log(response)
+    }
+    setDates()
+  }, [zodiacSign])
 
   const onSubmitHandler = async () => {
     try {
@@ -38,9 +53,11 @@ function App() {
         const parsedError: { err: string } = await response.json();
         setError(parsedError.err);
       } else {
+        setFlipped(true)
         const parsedResponse: quoteResonse = await response.json();
         setCardsInfo(parsedResponse.quoteRecommendation);
       }
+
       const zodiacInfo = await fetch(`/api/${zodiacSign}`, {});
       if (zodiacInfo.status !== 200) {
         const parsedError: { err: string } = await zodiacInfo.json();
@@ -50,6 +67,7 @@ function App() {
         console.log('parsedResponse:', parsedResponse);
         setPersonalityInfo(parsedResponse.datesAndTraits);
       }
+
     } catch (error) {
       console.error('onSubmitHandler Error: ', error);
       setError('Error fetching recommendation');
@@ -93,15 +111,13 @@ function App() {
           ></textarea>
         </label>
       </div>
-      <button type='submit' onClick={onSubmitHandler} className=''>
-        Talk To Me
-      </button>
-      <div id='cards' className='flex justify-center'>
-        {cardsArr &&
-          cardsArr.map((card, index) => (
-            <Card cardInfo={cardsInfo} index={index} />
-          ))}
-      </div>
+
+      <button type="submit" onClick={onSubmitHandler} className='border border-2 border-white text-white m-4 p-1 w-24'>Submit</button>
+      <div id="cards" className='flex justify-center'>
+        {
+          cardsArr && cardsArr.map((card, index) => <Card cardInfo={cardsInfo} index={index} zodiacSign={zodiacSign} flipped={flipped} />)
+        }
+
       <div className='star-field'>
         <div className='star'></div>
         <div className='star'></div>

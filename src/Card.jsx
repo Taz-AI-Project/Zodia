@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-const Card = ({ cardInfo, index }) => {
-  const [zIndex, setZIndex] = useState('');
+const Card = ({ cardInfo, index, zodiacSign, flipped }) => {
+  const [zIndex, setZIndex] = useState("");
   useEffect(() => {
     const zIndexSetter = () => {
       if (index === 0) {
-        setZIndex('rotate-3');
+        setZIndex("rotate-5");
       } else {
-        setZIndex('none');
+        setZIndex("none");
       }
     };
     zIndexSetter();
@@ -15,9 +15,37 @@ const Card = ({ cardInfo, index }) => {
 
   return (
     <div
-      className={`h-[25rem] w-[22rem] border-2 rounded-md absolute top-80 ${zIndex} bg-champagne border-champagne text-darkpurple`}
+      className={`card h-[25rem] w-[16rem] absolute top-80 ${zIndex} ${
+        flipped && index === 0 ? "flipped" : ""
+      }`}
     >
-      {index === 3 ? cardInfo : null}
+      <div className="card-inner w-full h-full">
+        {/* Front Side */}
+        <div
+          className="card-front w-full h-full flex items-center justify-center rounded-md text-white"
+          style={{
+            backgroundImage: `url('../assets/${flipped ? 'blank' : zodiacSign}.png')`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          { flipped && index === 3 ? cardInfo : null }
+        </div>
+
+        {/* Back Side */}
+        <div
+          className="card-back w-full h-full flex items-center justify-center rounded-md text-white"
+          style={{
+            backgroundImage: `url('../assets/blank.png')`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          { index === 3 ? cardInfo : null }
+        </div>
+      </div>
     </div>
   );
 };
