@@ -24,23 +24,30 @@ function App() {
   const [cardsArr, setCardsArr] = useState<null[]>([]);
   const [cardsInfo, setCardsInfo] = useState(' ');
   const [error, setError] = useState(''); //TO DO: update error handling on frontend
-  const [flipped, setFlipped] = useState(false)
+  const [flipped, setFlipped] = useState(false);
   const [personalityInfo, setPersonalityInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-    
+
   useEffect(() => {
-    setCardsArr(Array.from({length: 4}, (_, index) => {
-      <Card cardInfo={_} index={index} zodiacSign={zodiacSign} flipped={flipped} />
-    }))
-  }, [])
+    setCardsArr(
+      Array.from({ length: 4 }, (_, index) => {
+        <Card
+          cardInfo={_}
+          index={index}
+          zodiacSign={zodiacSign}
+          flipped={flipped}
+        />;
+      })
+    );
+  }, []);
 
   useEffect(() => {
     const setDates = async () => {
-      const response = await fetch(`/api/${zodiacSign}`)
-      console.log(response)
-    }
-    setDates()
-  }, [zodiacSign])
+      const response = await fetch(`/api/${zodiacSign}`);
+      console.log(response);
+    };
+    setDates();
+  }, [zodiacSign]);
 
   const onSubmitHandler = async () => {
     try {
@@ -58,7 +65,7 @@ function App() {
         const parsedError: { err: string } = await response.json();
         setError(parsedError.err);
       } else {
-        setFlipped(true)
+        setFlipped(true);
         const parsedResponse: quoteResonse = await response.json();
         setCardsInfo(parsedResponse.quoteRecommendation);
       }
@@ -86,9 +93,6 @@ function App() {
         style={{
           fontFamily: '"Codystar", cursive',
           letterSpacing: '4px',
-          // fontFamily: '"Raleway Dots", cursive',
-          // letterSpacing: '8px',
-          color: 'gold',
         }}
         className='text-[min(10vw,40px)] font-semibold mb-8 text-shadow-lg/30 text-champagne'
       >
@@ -143,7 +147,7 @@ function App() {
               startDate={personalityInfo.startD}
               endDate={personalityInfo.endD}
               index={index}
-              zodiacSign={zodiacSign} 
+              zodiacSign={zodiacSign}
               flipped={flipped}
             />
           ))}
@@ -154,9 +158,8 @@ function App() {
         <div className='layer'></div>
         <div className='layer'></div>
       </div>
-      </div>
     </div>
-  )
+  );
 }
 
 export default App;
