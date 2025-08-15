@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+
 
 const Card = ({ cardInfo, index, startDate, endDate }) => {
   const [rotation, setRotation] = useState('');
   useEffect(() => {
     const rotationSetter = () => {
       if (index === 0) {
-        setRotation('rotate-3');
+        setRotation('rotate-5');
       } else {
         setRotation('none');
       }
@@ -15,9 +16,22 @@ const Card = ({ cardInfo, index, startDate, endDate }) => {
 
   return (
     <div
-      className={`card h-[25rem] w-[22rem] border-3 border-white rounded-md absolute top-80 bg-champagne text-darkpurple rotate-${index}`}
+      className={`card h-[25rem] w-[16rem] border-3 border-white rounded-md absolute top-80 rotate-${index} ${
+        flipped && index === 0 ? "flipped" : ""
+      }`}
     >
-      {index === 3 && (
+      <div className="card-inner w-full h-full">
+        {/* Front Side */}
+        <div
+          className="card-front w-full h-full flex items-center justify-center rounded-md text-white"
+          style={{
+            backgroundImage: `url('../assets/${flipped ? 'blank' : zodiacSign}.png')`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          { flipped && index === 3 && (
         <div>
           <p>
             {startDate} - {endDate}
@@ -25,6 +39,21 @@ const Card = ({ cardInfo, index, startDate, endDate }) => {
           <p>{cardInfo}</p>
         </div>
       )}
+        </div>
+
+        {/* Back Side */}
+        <div
+          className="card-back w-full h-full flex items-center justify-center rounded-md text-white"
+          style={{
+            backgroundImage: `url('../assets/blank.png')`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          { index === 3 ? cardInfo : null }
+        </div>
+      </div>
     </div>
   );
 };

@@ -24,16 +24,23 @@ function App() {
   const [cardsArr, setCardsArr] = useState<null[]>([]);
   const [cardsInfo, setCardsInfo] = useState(' ');
   const [error, setError] = useState(''); //TO DO: update error handling on frontend
+  const [flipped, setFlipped] = useState(false)
   const [personalityInfo, setPersonalityInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+    
+  useEffect(() => {
+    setCardsArr(Array.from({length: 4}, (_, index) => {
+      <Card cardInfo={_} index={index} zodiacSign={zodiacSign} flipped={flipped} />
+    }))
+  }, [])
 
   useEffect(() => {
-    setCardsArr(
-      Array.from({ length: 4 }, (_, index) => {
-        return <Card cardInfo={_} index={index} />;
-      })
-    );
-  }, []);
+    const setDates = async () => {
+      const response = await fetch(`/api/${zodiacSign}`)
+      console.log(response)
+    }
+    setDates()
+  }, [zodiacSign])
 
   const onSubmitHandler = async () => {
     try {
@@ -51,9 +58,11 @@ function App() {
         const parsedError: { err: string } = await response.json();
         setError(parsedError.err);
       } else {
+        setFlipped(true)
         const parsedResponse: quoteResonse = await response.json();
         setCardsInfo(parsedResponse.quoteRecommendation);
       }
+
       const zodiacInfo = await fetch(`/api/${zodiacSign}`, {});
       if (zodiacInfo.status !== 200) {
         const parsedError: { err: string } = await zodiacInfo.json();
@@ -71,9 +80,18 @@ function App() {
   };
 
   return (
-    <div className='relative min-h-screen'>
+    <div className='relative min-h-screen app-surface'>
       <MusicButton />
-      <h1 className='text-[min(10vw,40px)] font-semibold mb-8 text-shadow-lg/30 text-champagne'>
+      <h1
+        style={{
+          fontFamily: '"Codystar", cursive',
+          letterSpacing: '4px',
+          // fontFamily: '"Raleway Dots", cursive',
+          // letterSpacing: '8px',
+          color: 'gold',
+        }}
+        className='text-[min(10vw,40px)] font-semibold mb-8 text-shadow-lg/30 text-champagne'
+      >
         Zodia
       </h1>
       <div className='flex justify-center m-5'>
@@ -125,6 +143,8 @@ function App() {
               startDate={personalityInfo.startD}
               endDate={personalityInfo.endD}
               index={index}
+              zodiacSign={zodiacSign} 
+              flipped={flipped}
             />
           ))}
       </div>
