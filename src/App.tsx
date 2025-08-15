@@ -19,7 +19,7 @@ interface zodiacResonse {
 }
 
 function App() {
-  const [zodiacSign, setZodiacSign] = useState<string>('');
+  const [zodiacSign, setZodiacSign] = useState<string>('blank');
   const [feelingContent, setFeelingContent] = useState('');
   const [cardsArr, setCardsArr] = useState<null[]>([]);
   const [cardsInfo, setCardsInfo] = useState(' ');

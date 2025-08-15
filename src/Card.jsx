@@ -15,8 +15,8 @@ const Card = ({ cardInfo, index, startDate, endDate, flipped, zodiacSign }) => {
 
   return (
     <div
-      className={`card h-[25rem] w-[16rem] border-3 border-white rounded-md absolute top-80 rotate-${index} ${
-        flipped && index === 0 ? 'flipped' : ''
+      className={`card h-[25rem] w-[16rem] border-3 border-champagne rounded-md absolute top-80 ${
+        flipped && index === 3 ? 'flipped' : ''
       }`}
     >
       <div className='card-inner w-full h-full'>
@@ -24,9 +24,7 @@ const Card = ({ cardInfo, index, startDate, endDate, flipped, zodiacSign }) => {
         <div
           className='card-front w-full h-full flex items-center justify-center rounded-md text-white'
           style={{
-            backgroundImage: `url('../assets/${
-              flipped ? 'blank' : zodiacSign
-            }.png')`,
+            backgroundImage: `url('../assets/${zodiacSign}.png')`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPosition: 'center',

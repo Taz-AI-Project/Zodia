@@ -15,6 +15,7 @@
     @apply bg-persindigo rounded-sm cursor-pointer text-champagne shadow-lg hover:shadow-[0_0px_35px_rgba(227,171,206,0.7)] transition-shadow duration-300 p-1;
   }
 }
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -49,6 +50,11 @@ html {
   height: 100vh;
   background-repeat: no-repeat;
   background-size: contain;
+  color: #ffead0;
+}
+
+body {
+  height: 100%;
 }
 
 select {
@@ -57,6 +63,7 @@ select {
   color: #ffead0;
 }
 
+/* USER INPUT */
 .textarea-container {
   position: relative; /* Allows absolute positioning of children */
   display: inline-block; /* Or block, depending on desired layout */
@@ -69,28 +76,28 @@ select {
   /* Add styling for the button */
 }
 
-.bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -3;
-}
-.bg:before {
-  content: '';
-  width: 100%;
-  height: 100%;
-  background: #000;
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  opacity: 0.3;
-}
-
+/* CARD  */
 .card {
   perspective: 1000px;
   box-shadow: 2px 4px 16px 0px rgb(28, 4, 27, 0.5);
   overflow: scroll;
+  padding: 5px;
+}
+
+.card:nth-child(1) {
+  rotate: 5deg;
+}
+
+.card:nth-child(2) {
+  rotate: 3deg;
+}
+
+.card:nth-child(3) {
+  rotate: 2deg;
+}
+
+.card:nth-child(4) {
+  rotate: 1deg;
 }
 
 .card-inner {
@@ -115,6 +122,48 @@ select {
 
 .card-back {
   transform: rotateY(180deg);
+}
+
+/* HAZY FOG */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    130% 95% at 50% 128%,
+    rgba(255, 168, 60, 0.9) 0%,
+    rgba(255, 150, 70, 0.78) 18%,
+    rgba(255, 130, 90, 0.58) 36%,
+    rgba(220, 100, 150, 0.3) 56%,
+    rgba(60, 10, 90, 0.1) 70%,
+    rgba(0, 0, 0, 0) 84%
+  );
+
+  filter: blur(22px);
+  mix-blend-mode: screen;
+  opacity: 1;
+}
+
+/* STAR BACKGROUND */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -3;
+}
+
+.bg:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #000;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
 }
 
 @keyframes sf-fly-by-1 {
@@ -147,6 +196,7 @@ select {
     opacity: 0.5;
   }
 }
+
 .star-field {
   position: fixed;
   top: 0;
@@ -156,7 +206,10 @@ select {
   perspective: 600px;
   -webkit-perspective: 600px;
   z-index: -1;
+  pointer-events: none;
+  inset: 0;
 }
+
 .star-field .layer {
   box-shadow: -411px -476px #cccccc, 777px -407px #d4d4d4, -387px -477px #fcfcfc,
     -91px -235px #d4d4d4, 491px -460px #f7f7f7, 892px -128px #f7f7f7,
@@ -210,31 +263,7 @@ select {
   animation: sf-fly-by-3 25s linear infinite;
 }
 
-body{
-  height: 100%
+.app-surface {
+  position: relative;
+  z-index: 2;
 }
-
-.app-surface { position: relative; z-index: 2; }
-
-.star-field { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
-
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(130% 95% at 50% 128%,
-      rgba(255,168,60,0.90) 0%,
-      rgba(255,150,70,0.78) 18%,
-      rgba(255,130,90,0.58) 36%,
-      rgba(220,100,150,0.30) 56%,
-      rgba(60,10,90,0.10)   70%,
-      rgba(0,0,0,0)         84%);
-      
-  filter: blur(22px);     
-  mix-blend-mode: screen; 
-  opacity: 1;
-}
-
