@@ -69,7 +69,7 @@ function App() {
         }}
         className='text-[min(10vw,40px)] mb-8 text-white text-shadow-lg/30'
       >
-        Zodiac project
+        Zodia
       </h1>
       <div className='flex justify-center m-5'>
         <p className='text-champagne mr-5'>Whats your sign?</p>
