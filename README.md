@@ -68,6 +68,10 @@ Users should be able to:
 - Michael
   - Initializing quote dataset with embeddings
   - Styling: hazing effect
+- Tucker
+  - AI prompting
+  - Fine-tuning
+  - Hallucinations
 - Yuan
    - music selection and looping/
    - React vs. React Native
