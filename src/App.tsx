@@ -4,18 +4,28 @@ import Card from './Card'
 
 
 function App() {
-  const [zodiacSign, setZodiacSign] = useState<string>('')
+  const [zodiacSign, setZodiacSign] = useState<string>('blank')
   const [feelingContent, setFeelingContent] = useState('')
   const [cardsArr, setCardsArr] = useState<any>([])
   const [cardsInfo, setCardsInfo] = useState('Quote')
+  const [zodiacDate, setZodiacDate] = useState('')
+  const [flipped, setFlipped] = useState(false)
   const [error, setError] = useState('')
 
 
   useEffect(() => {
     setCardsArr(Array.from({length: 4}, (_, index) => {
-      <Card cardInfo={_} index={index} />
+      <Card cardInfo={_} index={index} zodiacSign={zodiacSign} flipped={flipped} />
     }))
   }, [])
+
+  useEffect(() => {
+    const setDates = async () => {
+      const response = await fetch(`/api/${zodiacSign}`)
+      console.log(response)
+    }
+    setDates()
+  }, [zodiacSign])
 
   const onSubmitHandler = async () => {
     try {
@@ -29,10 +39,13 @@ function App() {
         const parsedError: { err: string } = await response.json();
         setError(parsedError.err);
       } else {
+        setFlipped(true)
         const parsedResponse: any = await response.json();
         setCardsInfo(parsedResponse.quoteRecommendation);
+        
       }
-
+        setCardsInfo('flipped quote')
+        setFlipped(true)
     } catch (error) {
       console.error('onSubmitHandler Error: ', error)
       setError('Error fetching recommendation');
@@ -45,6 +58,7 @@ function App() {
       <div>
         <p className='text-white'>Whats your sign?</p>
         <select onChange={(e) => setZodiacSign(e.target.value)}>
+          <option value="blank"></option>
           <option value="Aries">♈ Aries</option>
           <option value="Taurus">♉ Taurus</option>
           <option value="Gemini">♊ Gemini</option>
@@ -66,7 +80,7 @@ function App() {
       <button type="submit" onClick={onSubmitHandler} className='border border-2 border-white text-white m-4 p-1 w-24'>Submit</button>
       <div id="cards" className='flex justify-center'>
         {
-          cardsArr && cardsArr.map((card, index) => <Card cardInfo={cardsInfo} index={index} />)
+          cardsArr && cardsArr.map((card, index) => <Card cardInfo={cardsInfo} index={index} zodiacSign={zodiacSign} flipped={flipped} />)
         }
       </div>
     </div>
