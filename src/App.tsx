@@ -154,15 +154,9 @@ function App() {
         <div className='layer'></div>
         <div className='layer'></div>
       </div>
-      {/* {personalityInfo && (
-        <div className='personality'>
-          {personalityInfo.traits.map((trait, index) => (
-            <p key={index}>{trait}</p>
-          ))}
-        </div>
-      )} */}
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
