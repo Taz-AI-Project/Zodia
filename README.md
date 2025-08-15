@@ -1,8 +1,11 @@
 # Zodia
 
+![iphone_mockup](./assets/Zodia_mockup_sm.png)
+
 ## User Story
 
-A user that is filled with emotion (positive or negative) wants to share with someone but a family member or friend is not available. This is the reality for many millenials, especially post-covid.
+A user that is filled with emotion (positive or negative) wants to share with someone but a family member or friend is not available.
+![user_profile](./assets/user_profile.png)
 
 ### Solution:
 
@@ -27,41 +30,41 @@ Users should be able to:
 
 #### React Component Structure
 
-![components](./assets/component_structure.png)
+![components](./assets/component_structure2.png)
 
 #### Mongo DB Schema
 
 ## Technologies Used
 
 - React: the app uses embedded javascript to render information on the page
-- React router: the app uses routner to setup a route of the game page
 - Typescript: the app uses typescript due to its enhancement being the addition of static typing
 - Node & Express: the app has its own server, built using Express
 - MVC Pattern: the app uses the Model View Controller (MVC) programming design pattern
+- MongoDB: the app uses a non-relational database which simplifies data modeling as it aligns well with common data formats in web development
 - Mongoose: to model and query data in MongoDB through Node
+- Pinecone: to provide a fully managed, scalable, and user-friendly vector database that simplifies the process of indexing, storing, and searching high-dimensional vectors
 - Tailwind.css: The app is efficiently well-designed and considers user experience and usability
-- Postman: to test server requests
+- Postman: to test server requests during development
 - Dotenv: to load environment variables from .env file
 - Vite: for a fast modern development environment
-- Vitest: testing framework (Jest support for ECMAScript Modules is still experimental)
-- React testing library: to write unit tests for React components (works on top of react-dom which was already included)
 
-## Major Coding WinsA
-- Embedding to initial data
-![AI_Embedding](./assets/majorCodingWins.png)
+## Major Coding Win
+
+- Embedding the initial data
+  ![AI_Embedding](./assets/majorCodingWins.png)
 
 ## Technical Challenges
 
 - Disney
   - Resolving merge conflicts
   - Working with multiple branches
-  - CSS
+  - Styling: CSS
 - Lisa
   - Working with software and time constraints
-  - Nested objects in mongo schema
-  - Typescript interfaces
-  - Tailwind
-  - code reviews, debugging, and quality assurance
+    - Nested objects in mongo schema
+    - Typescript interfaces
+  - Styling: Tailwind
+  - Code reviews, Debugging, and Quality Assurance
 - Michael
   - Initializing quote dataset with embeddings
   - Styling: hazing effect
@@ -70,9 +73,9 @@ Users should be able to:
   - Fine-tuning
   - Hallucinations
 - Yuan
-   - music selection and looping/
-   - React vs. React Native
-   - Typescript
+  - Music selection and component
+  - React vs. prev React Native experience
+  - Typescript
 
 ## Installation Instructions
 
@@ -89,8 +92,11 @@ Users should be able to:
 
 ## Unsolved Problems
 
-## AI Hallucinations ![Hallucinations](./assets/Hallucinations.png)
+- AI Hallucinations
+  - ![Hallucinations](./assets/Hallucinations.png)
 
 ## Next Steps
 
--
+- add zodiac personaity traits to card
+- handle text overflow on card content
+- log page to see dated previous queries and responses
