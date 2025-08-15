@@ -1,14 +1,14 @@
-# Zodiac
+# Zodia
 
 ![zodiac_iphone]()
 
 ## User Story
 
-A user that is filled with emotion (positive or negative) wants to share with someone but a family member or friend is not available.
+A user that is filled with emotion (positive or negative) wants to share with someone but a family member or friend is not available. This is the reality for many millenials, especially post-covid.
 
 ### Solution:
 
-Create an AI friend that can listen to your feelings and provide inspirational quotes to help you process them.
+Create an AI friend that can listen to your feelings and provide inspirational words to help you process them.
 
 ### Acceptance Criteria:
 
@@ -42,7 +42,6 @@ Users should be able to:
 - Typescript: the app uses typescript due to its enhancement being the addition of static typing
 - Node & Express: the app has its own server, built using Express
 - MVC Pattern: the app uses the Model View Controller (MVC) programming design pattern
-- Supabase/PostgreSQL: the app persists data via a relational database
 - Mongoose: to model and query data in MongoDB through Node
 - Tailwind.css: The app is efficiently well-designed and considers user experience and usability
 - Postman: to test server requests
@@ -51,14 +50,28 @@ Users should be able to:
 - Vitest: testing framework (Jest support for ECMAScript Modules is still experimental)
 - React testing library: to write unit tests for React components (works on top of react-dom which was already included)
 
-## Major Coding Wins
+## Major Coding WinsA
+- Embedding to initial data
+![AI_Embedding](./assets/majorCodingWins.png)
 
 ## Technical Challenges
 
-- ## Disney
-- ## Lisa
-- ## Michael
-- ## Yuan
+- Disney
+  - Resolving merge conflicts
+  - Working with multiple branches
+  - CSS
+- Lisa
+  - Working with software and time constraints
+  - Nested objects in mongo schema
+  - Typescript interfaces
+  - Tailwind
+- Michael
+  - Initializing quote dataset with embeddings
+  - Styling: hazing effect
+- Yuan
+   - music selection and looping/
+   - React vs. React Native
+   - Typescript
 
 ## Installation Instructions
 
@@ -74,9 +87,8 @@ Users should be able to:
 3. To launch the app locally run `npm start` from the root folder and navigate to **localhost:5173** in your browser.
 
 ## Unsolved Problems
-AI Hallucinations ![Hallucinations] 
-(./assets/Hallucinations.png)
--
+
+## AI Hallucinations ![Hallucinations](./assets/Hallucinations.png)
 
 ## Next Steps
 
