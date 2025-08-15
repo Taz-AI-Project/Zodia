@@ -1,23 +1,30 @@
 import { useEffect, useState } from 'react';
 
-const Card = ({ cardInfo, index }) => {
-  const [zIndex, setZIndex] = useState('');
+const Card = ({ cardInfo, index, startDate, endDate }) => {
+  const [rotation, setRotation] = useState('');
   useEffect(() => {
-    const zIndexSetter = () => {
+    const rotationSetter = () => {
       if (index === 0) {
-        setZIndex('rotate-3');
+        setRotation('rotate-3');
       } else {
-        setZIndex('none');
+        setRotation('none');
       }
     };
-    zIndexSetter();
+    rotationSetter();
   }, []);
 
   return (
     <div
-      className={`h-[25rem] w-[22rem] border-2 rounded-md absolute top-80 ${zIndex} bg-champagne border-champagne text-darkpurple`}
+      className={`card h-[25rem] w-[22rem] border-3 border-white rounded-md absolute top-80 bg-champagne text-darkpurple rotate-${index}`}
     >
-      {index === 3 ? cardInfo : null}
+      {index === 3 && (
+        <div>
+          <p>
+            {startDate} - {endDate}
+          </p>
+          <p>{cardInfo}</p>
+        </div>
+      )}
     </div>
   );
 };
