@@ -80,15 +80,20 @@ Users should be able to:
 ## Installation Instructions
 
 1. Run `npm install` in root folder to install all necessary dependencies listed in the package.json
-2. Create a `.env` file in the root. You'll need to have:
-   a. `MONGO_URI` to connect to your MongoDB, which can be found in `server/config/db.ts`
-   b. `OPENAI_API_KEY` to connect to OpenAI, which can be found in `server/controllers/openaiController.ts`
-   c. `PINECONE_API_KEY`, to connect to the pinecone vector database.
-   d. create a new index called `quotes` in Pinecone using `text-embedding-3-small` type and dimension `512`
-   e. `PINECONE_INDEX`= "quotes" -
-   f. run `npm run upsert-batch`. This will upsert the file in `offline/embeddings_data_with_vectors.json` to the Pinecone index,
-   g. run `npm run zodiacInfo`. This will upsert the mongo databse with dates and traits about each zodiac sign. To verify the data existence on local mongush, run `brew services start mongodb-community` and then run `mongosh`, `show dbs`, `use {db name}`, `show collections`, `db.zodiacinfos.find()`
-3. To launch the app locally run `npm start` from the root folder and navigate to **localhost:5173** in your browser.
+2. Create a `.env` file in the root of the project. You'll need to have:
+
+- `MONGO_URI` to connect to your MongoDB, which can be found in `server/config/db.ts`
+- `OPENAI_API_KEY` to connect to OpenAI, which can be found in `server/controllers/openaiController.ts`
+- `PINECONE_INDEX="quotes"`
+- `PINECONE_API_KEY` to connect to the pinecone vector database.
+- In the Pinecone UI, create a new index called `quotes`using `type: text-embedding-3-small` and `dimension: 512`
+
+3. Run `npm run upsert-batch`. This will upsert the file in `offline/embeddings_data_with_vectors.json` to the Pinecone index
+4. Run `npm run zodiacInfo`. This will upsert the mongo databse with dates and traits about each zodiac sign.
+
+- To verify the data existence on local mongosh, run `brew services start mongodb-community` and then run `mongosh`, `show dbs`, `use {db name}`, `show collections`, `db.zodiacinfos.find()`
+
+5. To launch the app locally run `npm start` from the root folder and navigate to **localhost:5173** in your browser.
 
 ## Unsolved Problems
 
