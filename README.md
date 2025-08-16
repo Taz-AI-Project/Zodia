@@ -5,7 +5,7 @@
 ## User Story
 
 A user that is filled with emotion (positive or negative) wants to share with someone but a family member or friend is not available.
-![user_profile](./assets/user_profile.png)
+![user_profile](./assets/TAZ-Zodia-UX-final.png)
 
 ### Solution:
 
@@ -92,11 +92,14 @@ Users should be able to:
 
 ## Unsolved Problems
 
+- Handle additional queries after first submit
+- Handle latency
 - AI Hallucinations
   - ![Hallucinations](./assets/Hallucinations.png)
 
 ## Next Steps
 
-- add zodiac personaity traits to card
-- handle text overflow on card content
-- log page to see dated previous queries and responses
+- Add zodiac personaity traits to card
+- Handle text overflow on card content
+- Handle line breaks from AI response
+- Log page to see dated previous queries and responses
